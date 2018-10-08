@@ -7,7 +7,7 @@
 ### activate the venv by the command:-
   ``source venv/bin/activate``
 ### install django
-  ``pip3 install django``
+  ``pip install django``
 ### check for the version by opening python command prompt and type
  ``>>>import django``
 ### This should not give any error
