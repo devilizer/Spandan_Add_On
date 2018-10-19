@@ -12,6 +12,8 @@
  ``>>>import django``
 ### This should not give any error
   ``>>>print(django.get_version())``
+ ###
 ``sudo apt-get install mysql-server``
+###
 ``sudo apt-get install libmysqlclient-dev``
 
