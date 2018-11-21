@@ -6,7 +6,7 @@ class Sport(models.Model):
     organiser = models.CharField(max_length =200,default=0)
     organizer_rollno = models.CharField(max_length=200,default=0)
     def __str__(self):
-        return self.Name
+        return (self.Name)
 
 class Team(models.Model):
     team_name = models.CharField(max_length=200)
@@ -26,3 +26,5 @@ class Match(models.Model):
     start_time = models.DateTimeField('start of match')
     end_time = models.DateTimeField('end of match')
     result = models.CharField(max_length=200)
+    def __str__(self):
+        return(self.Team1.team_name+" vs "+ self.Team2.team_name)
