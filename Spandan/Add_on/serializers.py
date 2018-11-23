@@ -17,4 +17,4 @@ class SportSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = '__all__'        
+        fields = '__all__'

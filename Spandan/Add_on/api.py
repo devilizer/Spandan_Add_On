@@ -46,9 +46,9 @@ class MatchList(APIView):
 
 
 class Search_by_sport(APIView):
-    def get(self,request,search):
+    def get(self,request,sport):
         try:
-            matches = Match.objects.filter(Sport_id==search)
+            matches = Match.objects.filter(Sport_id=sport)
             serializer = MatchSerializer(matches,many=True)
             response={
                 "status":"Success",
@@ -60,9 +60,11 @@ class Search_by_sport(APIView):
 
 
 class Search_by_team(APIView):
-    def get(self,request,search_team):
+    def get(self,request,team):
         try:
-            matches = Match.objects.filter(Team1_id==search_team or Team2_id==search_team)
+            matches_team1 = Match.objects.filter(Team1_id=team)
+            matches_team2 = Match.objects.filter(Team2_id=team)
+            matches = matches_team1|matches_team2
             serializer = MatchSerializer(matches,many=True)
             response={
                 "status":"Success",
@@ -74,9 +76,11 @@ class Search_by_team(APIView):
 
 
 class Search_by_team_and_sport(APIView):
-    def get(self,request,search_team,search_sport):
+    def get(self,request,team,sport):
         try:
-            matches = Match.objects.filter(Sport_id==search_sport).filter(Team1_id==search_team or Team2_id==search_team)
+            matches_team1 = Match.objects.filter(Sport_id=sport).filter(Team1_id=team)
+            matches_team2 = Match.objects.filter(Sport_id=sport).filter(Team2_id=team)
+            matches = matches_team1|matches_team2
             serializer = MatchSerializer(matches,many=True)
             response={
                 "status":"Success",
@@ -96,7 +100,6 @@ class SportList(APIView):
                 "status":"Success",
                 "data" : serializer.data
             }
-            response={}
         except ObjectDoesNotExist:
             raise SportDoesNotExist
         return Response(response)
@@ -116,9 +119,9 @@ class TeamList(APIView):
         return Response(response)
 
 class TeamListExcept(APIView):
-    def get(self,request,team_id):
+    def get(self,request,team):
         try:
-            teams=Team.objects.exclude(id=team_id)
+            teams=Team.objects.exclude(id=team)
             team_serializer=TeamSerializer(teams,many=True)
             response={
                 "status":"Success",
