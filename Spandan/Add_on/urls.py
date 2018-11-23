@@ -10,6 +10,6 @@ urlpatterns = [
     url('sport/<int:sport>/',Search_by_sport.as_view()),
     url('team_sport/<int:team>/<int:sport>/',Search_by_team_and_sport.as_view()),
     url('teams/',TeamList.as_view()),
-    url('sports/',SporrtList.as_view()),
+    url('sports/',SportList.as_view()),
 
 ]

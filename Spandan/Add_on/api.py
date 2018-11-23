@@ -2,15 +2,12 @@ import io
 
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
-import xlsxwriter
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from Add_on.models import *
-from Add_on.serializers import *
-from Add_on.exception import *
+from Add_on.models import Team,Sport,Match
+from Add_on.serializers import MatchSerializer,SportSerializer,TeamSerializer
+from Add_on.exception import MatchDoesNotExist,SportDoesNotExist,TeamDoesNotExist
 
 
 
@@ -94,11 +91,12 @@ class SportList(APIView):
     def get(self,request):
         try:
             sports=Sport.objects.all()
-            sport_serializer=SportSerializer(sports,many=True)
+            serializer=SportSerializer(sports,many=True)
             response={
-                'status=Success',
-                "data":sport_serializer.data
+                "status":"Success",
+                "data" : serializer.data
             }
+            response={}
         except ObjectDoesNotExist:
             raise SportDoesNotExist
         return Response(response)
@@ -110,7 +108,7 @@ class TeamList(APIView):
             teams=Team.objects.all()
             team_serializer=TeamSerializer(teams,many=True)
             response={
-                "status":"Success"
+                "status":"Success",
                 "data":team_serializer.data
             }
         except ObjectDoesNotExist:
@@ -123,7 +121,7 @@ class TeamListExcept(APIView):
             teams=Team.objects.exclude(id=team_id)
             team_serializer=TeamSerializer(teams,many=True)
             response={
-                "status":"Success"
+                "status":"Success",
                 "data":team_serializer.data
             }
         except ObjectDoesNotExist:
