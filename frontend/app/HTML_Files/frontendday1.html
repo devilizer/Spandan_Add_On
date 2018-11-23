@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <script type="text/javascript" src="frontendday1_js.js" async></script>
+</head>
+
+<link rel="stylesheet" type="text/css" href="frontendday1_css.css" />
+
+<body>
+
+
+<table id="t01">
+  <tr >
+    <th colspan="7" style="padding-top:75px; "><h1><center>CALENDAR</center></h1></th>
+  </tr>
+  <tr >
+    <form id="forcalendar" action="" method="get">
+    <th colspan="7" style="padding-top:75px;">
+      <input list="givemonth">
+      <datalist id="givemonth" name="monthlist">
+        <option>Select Month</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </datalist>
+      <input type="submit" value="Submit">
+
+
+      <input list="giveyear" >
+      <datalist  id="giveyear" name="yearlist">
+        <option>Select Year</option>
+        <script type="text/javascript">
+            var i;
+            var put_text="";
+            for(i=1800;i<3001;i++)
+            {
+              put_text+='<option value='+'"'+i+'"'+'>'+i+'</option>'+'<br/>';
+            }
+            document.write(put_text);
+        </script>
+      </datalist>
+      <input type="submit" value="Submit">
+
+    </th>
+    </form>
+  </tr>
+
+  <tr>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+
+
+</table>
+
+
+
+</body>
+
+</html>

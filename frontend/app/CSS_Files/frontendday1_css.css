@@ -1,0 +1,11 @@
+table#t01,table#t01 th,table#t01 td{
+
+  border: 3px solid green;
+  border-collapse: collapse;
+  padding-left : 125px;
+  padding-top : 125px;
+}
+
+table#t01 th{
+  text-align: center;
+}
