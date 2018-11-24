@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from . import views
+from Add_on.views import *
 from Add_on.api import *
 urlpatterns = [
     url(r'^matches/$',MatchList.as_view()),
