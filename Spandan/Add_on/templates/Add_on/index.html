@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+  {% load static %}
+  <script type='text/javascript' src='{% static "Add_on/angular.min.js" %}'></script>
+  <script type='text/javascript' src='{% static "Add_on/angular-route.min.js" %}'></script>
+  <script type='text/javascript' src='{% static "Add_on/fullcalendar-3.9.0/lib/jquery.min.js" %}'></script>
+  <script type='text/javascript' src='{% static "Add_on/fullcalendar-3.9.0/lib/moment.min.js" %}'></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel='stylesheet' type='text/css' href='{% static "Add_on/fullcalendar-3.9.0/fullcalendar.css" %}' />
+  <link rel='stylesheet' type='text/css' href='{% static "Add_on/fullcalendar-scheduler/dist/scheduler.css" %}'/>
+  <script type='text/javascript' src='{% static "Add_on/fullcalendar-3.9.0/fullcalendar.js" %}'></script>
+  <script type='text/javascript' src='{% static "Add_on/fullcalendar-scheduler/dist/scheduler.js" %}'></script>
+  <script type='text/javascript' src='{% static "Add_on/app.js" %}'></script>
+  <base href='/'></base>
+</head>
+
+
+<body >
+  <div ng-controller="myapp">
+    <center><header>SPANDAN SCHEDULER</header></center>
+    <select name="sportname"
+            id="sportname"
+            ng-model="sportname"
+            ng-init="sportname=sports_names[0].sport_id"
+            ng-options="option.sport_id as option.sport_name for option in sports_names" >
+    </select>
+
+    <select name="teamname"
+            id="teamname"
+            ng-model="teamname"
+            ng-init="teamname=teams_names[0].team_id"
+            ng-options="option.team_id as option.team_name for option in teams_names" >
+    </select>
+
+
+    <div id='calendar' >
+
+    </div>
+
+    <div id='datepicker'></div>
+
+  <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Create new event</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="title">Event title</label>
+                          <input type="text"  name="title" id="title" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="starts-at">Starts at</label>
+                          <input type="text" name="starts_at" id="starts-at" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="ends-at">Ends at</label>
+                          <input type="text" name="ends_at" id="ends-at" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="sport1_id">SportId</label>
+                          <input type="text" name="sport1_id" id="sport1_id" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="level_1">Level</label>
+                          <input type="text" name="level_1" id="level_1" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="team1_id">Team1Id</label>
+                          <input type="text" name="team1_id" id="team1_id" />
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <label class="col-xs-4" for="team2_id">Team2Id</label>
+                          <input type="text" name="team2_id" id="team2_id" />
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+              </div>
+          </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+  </div>
+
+</body>
+
+
+</html>
