@@ -11,5 +11,4 @@ urlpatterns = [
     url(r'^teams/$',TeamList.as_view()),
     url(r'^sports/$',SportList.as_view()),
     url(r'^team_except/(?P<team>[0-9]+)/$',TeamListExcept.as_view()),
-
 ]
