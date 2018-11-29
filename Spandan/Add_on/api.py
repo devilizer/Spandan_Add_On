@@ -25,7 +25,10 @@ class MatchList(APIView):
             raise MatchDoesNotExist
         return Response(response)
     def post(self,request):
+        #import ipdb; ipdb.set_trace()
+
         try:
+
             serializer = MatchSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()

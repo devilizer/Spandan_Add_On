@@ -9,3 +9,6 @@ def divyanshu(request):
 def allmatch(request):
     matchlist = Match.objects.all()
     return HttpResponse(matchlist)
+
+def homepage(request):
+    return render(request , 'Add_on/index.html')
