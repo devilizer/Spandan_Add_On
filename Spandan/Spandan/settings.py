@@ -81,6 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'spandan',
+        'USER': 'root',
+        'PASSWORD': '1997',
         'HOST': 'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
