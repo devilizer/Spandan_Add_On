@@ -28,8 +28,8 @@ class MatchList(APIView):
         #import ipdb; ipdb.set_trace()
 
         try:
-
-            serializer = MatchSerializer(data=request.data)
+            change=request.data
+            serializer = MatchSerializer(data=change[0])
             if serializer.is_valid():
                 serializer.save()
                 response={

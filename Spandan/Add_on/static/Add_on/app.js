@@ -132,8 +132,7 @@ app.controller("myapp",["$scope","$http","$q",function($scope,$http,$q){
                 // Display the modal and set the values to the event values.
                 $('.modal').modal('show');
                 $('.modal').find('#title').val(event.title);
-                $('.modal').find('#starts-at').val(event.start);
-                $('.modal').find('#ends-at').val(event.end);
+
       },
 
 
@@ -143,7 +142,7 @@ app.controller("myapp",["$scope","$http","$q",function($scope,$http,$q){
 
     // Bind the dates to datetimepicker.
     // You should pass the options you need
-    $("#starts-at, #ends-at").datetimepicker();
+
 
     // Whenever the user clicks on the "save" button om the dialog
     $('#save-event').on('click', function() {
@@ -159,11 +158,11 @@ app.controller("myapp",["$scope","$http","$q",function($scope,$http,$q){
               },
               data :angular.toJson([
                 {
-                  "Sport" : $('#sport1_id').val(),
-                  "Team1" : $('#team1_id').val(),
-                  "Team2" : $('#team2_id').val(),
+                  "Sport" : parseInt($('#sport1_id').val()),
+                  "Team1" : parseInt($('#team1_id').val()),
+                  "Team2" : parseInt($('#team2_id').val()),
                   "end_time" : $('#ends-at').val(),
-                  "id" :  "5",
+                  "id" :  parseInt($('#team1_id').val()) + parseInt($('#team2_id').val()),
                   "level" : $('#level_1').val(),
                   "result" : $('#result_name').val(),
                   "start_time": $('#starts-at').val()
